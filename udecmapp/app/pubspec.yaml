@@ -1,0 +1,51 @@
+name: udecmapp
+description: "UdeCMapp is a mobile application that allows students to access their university map."
+publish_to: "none" 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  barcode_scan2: ^4.3.3
+  google_fonts: ^6.2.1
+  flutter_map: ^6.0.1
+  latlong2: ^0.9.0
+  geolocator: ^13.0.1
+  permission_handler: ^11.3.1
+  http: ^1.0.0
+  webview_flutter: ^4.10.0
+  bubble: ^1.2.1
+  provider: ^6.0.5
+  google_generative_ai: ^0.2.0
+  flutter_dotenv: ^5.1.0
+  flutter_map_animations: ^0.5.0
+  dotted_line: ^3.2.3
+  url_launcher: ^6.2.4
+  shared_preferences: ^2.2.2
+  intl: ^0.18.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Jost
+      fonts:
+        - asset: assets/fonts/Jost-Regular.ttf
+        - asset: assets/fonts/Jost-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Jost-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Jost-Light.ttf
+          weight: 300

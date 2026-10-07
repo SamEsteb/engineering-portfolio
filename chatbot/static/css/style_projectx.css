@@ -1,0 +1,450 @@
+/* style_projectx.css */
+
+/* Estilos para el título dinámico (opcional) */
+#chatbot-title {
+    text-align: center; /* Centrar el texto */
+    flex-grow: 1; /* Permitir que el título ocupe el espacio disponible */
+    margin: 0; /* Eliminar márgenes */
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#close-chatbot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px; /* Icono de cerrar más grande */
+    line-height: 1; /* Ajustar altura de línea */
+    padding: 5px; /* Espacio alrededor del icono */
+    transition: color 0.3s ease; /* Transición de color */
+}
+
+#close-chatbot:hover {
+    color: #d9d9d9; /* Color más claro al hacer hover */
+}
+
+#chatbot-title-container {
+    position: absolute; /* Posicionar de forma absoluta */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Evitar que el contenedor intercepte clics */
+}
+
+#chatbot-title {
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    pointer-events: auto; /*Permitir interacciones con el elemento hijo*/
+}
+
+
+.identifier-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.identifier-item {
+    margin-bottom: 10px;
+    counter-increment: item-counter;
+    margin-left: 20px; /* Sangría para la lista de identificadores */
+    position: relative; /* Permite posicionamiento absoluto del contador */
+    padding-left: 10px; /* Espacio para el contador */
+}
+
+.identifier-item::before {
+    content: counter(item-counter) ". "; /* Muestra el contador */
+    position: absolute;
+    left: -10px; /* Ajusta la posición del contador */
+    font-weight: bold;
+}
+
+.identificador {
+    display: block; /* Asegura que ocupe toda la línea */
+}
+
+.date-range {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.toggle-button {
+    background-color: #ffffff;
+    border: 1px solid #0075f1; /* Borde azul */
+    padding: 4px 8px;  /* Padding compacto */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.85em;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+    white-space: nowrap;
+}
+
+.toggle-button:hover {
+    background-color: #0075f1;
+    color: #fff;
+    border-color: #005bbd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-button:active {
+    transform: scale(0.95);
+}
+
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    padding: 6px;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-input:hover {
+    border-color: #999;
+}
+
+.search-button {
+    background-color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    color: #0075f1;
+}
+
+.search-button:hover {
+    background-color: #518eff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    border-color: #989898;
+    color: white;
+}
+
+.search-button:active {
+    background-color: #004085;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px) scale(0.98);
+    color: white;
+}
+
+.search-results-list {
+    background-color: #ffffff;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 100px;
+    max-width: fit-content;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: #f0f0f0;
+}
+
+.search-result-item.selected {
+    background-color: #cce5ff;
+    color: #004085;
+    font-weight: bold;
+}
+
+.search-select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-select::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.search-select::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.search-select::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.static-bot-button,
+.icon-button {
+    background-color: #fff;
+    border: 1px solid #0075f1;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.85em;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+    white-space: nowrap;
+}
+
+/*.static-bot-button i {
+    color: #518eff;
+}*/
+
+.static-bot-button.consultar-button {
+    border-color: #0075f1;
+}
+
+.static-bot-button:hover,
+.icon-button:hover {
+    background-color: #0075f1;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+.static-bot-button:active,
+.icon-button:active {
+    background-color: #0056b3;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px) scale(0.98);
+    color: white;
+}
+
+.static-bot-button:disabled,
+.icon-button:disabled {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+    color: #999;
+    cursor: default;
+    box-shadow: none;
+    transform: none;
+}
+
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.search-select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 150px;
+    transition: border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.multi-select-container {
+    margin-bottom: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.multi-select-checkbox {
+    margin-right: 8px;
+    cursor: pointer;
+}
+.multi-select-label{
+    cursor: pointer;
+}
+
+.date-range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.date-input {
+     padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+.date-label {
+    margin: 0px 5px;
+}
+
+
+.multi-select:hover,
+.date-input:hover {
+    border-color: #999;
+}
+
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.selects-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.inline-search-select-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.select-label {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.inline-search-select {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85em;
+    width: 100%;
+    max-width: 250px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+.chatbot-question{
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.number-input-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre label e input */
+    margin-bottom: 0.5rem; /* Espacio debajo del contenedor */
+}
+
+.number-input-container label {
+    font-weight: bold;
+    font-size: 0.9em; /* Mismo tamaño que .select-label */
+}
+
+.number-input {
+    padding: 4px; /* Mismo padding que .inline-search-select y .date-input */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85em; /* Mismo tamaño que .inline-search-select y .date-input */
+    width: 80%;
+}
+
+.number-input:hover,
+.number-input:focus { /* Estilo al hacer hover y focus */
+    border-color: #999; /* Mismo color que .multi-select:hover, .date-input:hover */
+    outline: none; /* Elimina el outline por defecto en focus */
+}
+
+.number-input[disabled] {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+    color: #999;
+    cursor: default;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0.25rem; /* Pequeño margen superior */
+    display: block; /* Para que ocupe toda la línea */
+}
+
+.csv-download {
+    display: flex;
+    align-items: center; /* Centrar verticalmente el icono y el enlace */
+    gap: 8px;           /* Espacio entre el icono y el enlace */
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    margin-bottom: 10px; /*Espacio para el siguiente mensaje*/
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Sombra */
+}
+
+/* Estilos para el icono  */
+.csv-download-link {
+    color: #007bff;     /* Color azul para enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.csv-download i {
+    color: #007bff;  /* Azul */
+    font-size: 1.2em;  /* Tamaño del icono */
+}
+.csv-download-link:hover{
+    text-decoration: underline;
+}

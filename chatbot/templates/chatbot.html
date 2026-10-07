@@ -1,0 +1,105 @@
+<!-- HTML Base para la estructura de ambos chatbots -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    <!-- Favicon del sitio -->
+    <link rel="icon" href="{{ url_for('static', filename='/img/favicon.ico') }}" type="image/x-icon">
+
+    {% block extra_head %}{% endblock %} <!-- Bloque para agregar contenido extra en el head desde otras plantillas -->
+</head>
+<body>
+    <!-- Botón para abrir/cerrar el chatbot -->
+    <div id="chatbot-toggle">Chatbot</div>
+
+    <!-- Contenedor principal del chatbot -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-header">
+            <div class="header-group">
+                <div id="chatbot-menu">
+                    <!-- Botón para abrir el menú -->
+                    <button id="menu-toggle" title="Menú">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <!-- Opciones dentro del menú -->
+                    <ul id="menu-options">
+                        <li>
+                            <button id="clear-history-button" title="Borrar Historial">
+                                <i class="fas fa-trash"></i> Borrar Historial
+                            </button>
+                        </li>
+                        {% block menu_items %}{% endblock %} <!-- Espacio para agregar más opciones en el menú -->
+                    </ul>
+                </div>
+                {% block extra_header_elements %}{% endblock %} <!-- Bloque para agregar elementos extra en el header -->
+            </div>
+            {% block extra_header_elements_2 %}{% endblock %} <!-- Otro bloque para contenido extra en el header -->
+        </div>
+        
+        <!-- Contenedor donde se mostrarán los mensajes del chatbot -->
+        <div id="chatbot-resizable-content">
+            <div id="chatbot-content">
+                {% block content %}{% endblock %} <!-- Espacio para contenido dinámico -->
+            </div>
+        </div>
+        
+        <!-- Área de entrada para mensajes del usuario -->
+        <div id="chatbot-input">
+            <textarea id="user-input" placeholder="Escribe aquí..." rows="1"></textarea>
+            
+            <!-- Botón para grabar audio -->
+            <button id="record-audio" onclick="startRecording()" title="Grabar Audio">
+                <i class="fas fa-microphone"></i>
+            </button>
+            
+            <!-- Botón para subir imágenes -->
+            <button id="upload-image-only" onclick="document.getElementById('file-input-image').click()" title="Subir Imagen">
+                <i class="fas fa-image"></i>
+            </button>
+            <input type="file" id="file-input-image" style="display: none;" accept="image/*" onchange="handleImageSelect(event)">
+            
+            <!-- Botón para enviar mensaje -->
+            <button id="send-message" onclick="sendMessage()" title="Enviar Mensaje">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Elementos adicionales para efectos visuales -->
+    <div id="overlay"></div>
+    <div id="expanded-chart"></div>
+    
+    <!-- Contenedor para mostrar imágenes ampliadas -->
+    <div id="expanded-image-container" style="display: none;">
+        <span id="close-expanded-image" style="position: absolute; top: 10px; right: 15px; color: white; font-size: 24px; cursor: pointer;">×</span>
+        <img id="expanded-image" src="" alt="Imagen Expandida" style="max-width: 90%; max-height: 90%; display: block; margin: auto;">
+    </div>
+
+    <script>
+        // Obtiene el endpoint del chatbot usado desde Flask
+        window.endpointPrefix = "{{ endpoint_prefix }}";
+    </script>
+    
+    <!-- Librerías externas para gráficos, conversión de texto y alertas -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script> 
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    {% block extra_scripts %}{% endblock %} <!-- Bloque para agregar scripts adicionales antes que el script principal -->
+    
+    <!-- Script principal de ambos chatbots -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

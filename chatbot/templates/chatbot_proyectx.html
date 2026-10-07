@@ -1,0 +1,37 @@
+{% extends "chatbot.html" %}
+
+{% block extra_head %}
+<!-- Enlace a una hoja de estilos específica para la versión proyectx del chatbot -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_proyectx.css') }}">
+{% endblock %}
+
+{% block extra_header_elements_2 %}
+<!-- Contenedor del título del chatbot -->
+<div class="header-group" id="chatbot-title-container">
+    <span id="chatbot-title">Chatbot proyectx</span>
+</div>
+
+<!-- Botón para cerrar el chatbot -->
+<div class="header-group">
+    <button id="close-chatbot">✖</button>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- Contenedor para mostrar datos CSV -->
+<div id="csv-container"></div>
+
+<!-- Contenedor para mensajes de error -->
+<div id="error-message"></div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Se convierte el Árbol de nodos de decisión en un objeto JavaScript accesible desde el frontend
+    window.decision_tree = JSON.parse('{{ decision_tree | tojson | safe }}');
+</script>
+
+<!-- Enlace a los scripts específicos de la versión proyectx del chatbot -->
+<script src="{{ url_for('static', filename='js/proyectx.js') }}"></script>
+<script src="{{ url_for('static', filename='js/botones_proyectx.js') }}"></script>
+{% endblock %}
